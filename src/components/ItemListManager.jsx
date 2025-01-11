@@ -30,7 +30,7 @@ function ItemListManager() {
   // Function to handle removing an item from the list
   const handleRemoveItem = (index) => {
     const updatedItems = items.filter((_, i) => i !== index); // Remove item by index
-    toast.error('Item removed successfully!',{
+    toast.error('Item removed successfully!', {
       style: {
         borderRadius: '10px',
         background: '#333',
@@ -41,7 +41,13 @@ function ItemListManager() {
   };
 
   return (
-    <div style={{ width: '300px', margin: '50px auto', textAlign: 'center', fontFamily: 'Arial' }}>
+    <div style={{
+      width: '90%',
+      maxWidth: '300px',
+      margin: '100px auto 25px',
+      textAlign: 'center',
+      fontFamily: 'Arial',
+    }}>
       <form onSubmit={handleAddItem} style={{ marginBottom: '40px' }}>
         <input
           type="text"
@@ -50,34 +56,37 @@ function ItemListManager() {
           required
           onChange={handleInputChange}
           style={{
-            width: '90%',
+            width: '100%',
             padding: '10px',
             marginBottom: '10px',
             border: '1px solid #ccc',
             borderRadius: '5px',
             fontWeight: '500',
             fontSize: '16px',
+            backgroundColor: '#eff2f3',
           }}
         />
         <br />
-        <button type="submit"
+        <button
+          type="submit"
           style={{
-            padding: '10px 80px',
+            width: '90%',
+            padding: '10px 0',
             backgroundColor: '#189d42',
             color: 'white',
             border: 'none',
-            borderRadius: '5px',
+            borderRadius: '2px',
             cursor: 'pointer',
             fontSize: '16px',
-            margin: '10px',
+            margin: '10px 0',
             boxShadow: '0px 4px 6px rgba(0, 128, 0, 0.3)', // Green box shadow
           }}
         >
           Add Item
         </button>
       </form>
-      {items.length > 0 && <h2 style={{ textAlign: 'left', marginBottom: '10px' }}>Tasks List</h2>}
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
+      {items.length > 0 && <h2 style={{ textAlign: 'left', margin: '10px 5px' }}>Tasks List</h2>}
+      <ul style={{ listStyleType: 'none', padding: '5px' }}>
         {items.map((item, index) => (
           <li
             key={index}
@@ -93,7 +102,10 @@ function ItemListManager() {
             }}
           >
             <span>{item}</span>
-              <IoCloseCircleOutline style={{fontSize: '18px', color: 'red', cursor: 'pointer'}} onClick={() => handleRemoveItem(index)}/>
+            <IoCloseCircleOutline
+              style={{ fontSize: '18px', color: 'red', cursor: 'pointer' }}
+              onClick={() => handleRemoveItem(index)}
+            />
           </li>
         ))}
       </ul>
