@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { IoCloseCircleOutline } from "react-icons/io5";
 
 function ItemListManager() {
@@ -14,6 +15,13 @@ function ItemListManager() {
   const handleAddItem = (e) => {
     e.preventDefault();
     if (inputValue.trim() !== '') { // Check if input is not empty
+      toast.success('Item added successfully!', {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }); // Show success toast message
       setItems([...items, inputValue]); // Add new item to the list
       setInputValue(''); // Clear the input field
     }
@@ -22,6 +30,13 @@ function ItemListManager() {
   // Function to handle removing an item from the list
   const handleRemoveItem = (index) => {
     const updatedItems = items.filter((_, i) => i !== index); // Remove item by index
+    toast.error('Item removed successfully!',{
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    });
     setItems(updatedItems);
   };
 
